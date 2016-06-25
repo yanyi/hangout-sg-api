@@ -17,7 +17,7 @@ class Api::V1::EventsController < ApplicationController
 
   # GET /api/v1/events/area/:id
   def area
-    events = Event.find_by_area_id(params[:area_id])
+    events = Event.find_by_area_id(params[:id])
 
     render json: events, status: 200 # ok
   end
