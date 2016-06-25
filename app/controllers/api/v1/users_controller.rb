@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  # before_filter :authenticate_user_from_token!, only: [ :show, :update ]
+  before_filter :authenticate_user_from_token!, only: [ :update ]
   before_action :set_user, only: [ :show, :update ]
 
   # GET /api/v1/users/1
@@ -10,7 +10,6 @@ class Api::V1::UsersController < ApplicationController
   # POST /api/v1/users
   def create
     user = User.new(user_params)
-    user.id = params[:user_id]
 
     if user.save
       render json: user
@@ -38,7 +37,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:user_id, :email, :username, :profile_image_url, :token, :area_id)
+    params.permit(:email, :username, :profile_image_url, :token, :area_id)
   end
 
   def set_user
