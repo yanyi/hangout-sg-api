@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :date_time
+  attributes :id, :title, :description, :date_time, :user_id
 
   belongs_to :user
   belongs_to :activity
