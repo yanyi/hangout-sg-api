@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
       # Events
       resources :events
+
+      # Locations
+      resources :locations, only: [:index, :show]
     end
   end
 

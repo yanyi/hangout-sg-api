@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625055002) do
+ActiveRecord::Schema.define(version: 20160625072154) do
 
   create_table "activities", force: :cascade do |t|
     t.text     "name"
@@ -25,13 +25,20 @@ ActiveRecord::Schema.define(version: 20160625055002) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "event_users", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.text     "title"
     t.text     "description"
     t.text     "date_time"
-    t.string   "location_id"
-    t.string   "activity_id"
-    t.string   "user_id"
+    t.integer  "location_id"
+    t.integer  "activity_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -41,8 +48,7 @@ ActiveRecord::Schema.define(version: 20160625055002) do
     t.text     "lat"
     t.text     "lng"
     t.text     "location_image_url"
-    t.string   "area_id"
-    t.string   "activity_id"
+    t.integer  "area_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
@@ -52,7 +58,7 @@ ActiveRecord::Schema.define(version: 20160625055002) do
     t.text     "username"
     t.text     "profile_image_url"
     t.text     "token"
-    t.string   "area_id"
+    t.integer  "area_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
