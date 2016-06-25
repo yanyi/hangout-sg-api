@@ -28,6 +28,13 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  # POST /api/v1/users/get_id
+  def get_id
+    user = User.find_by_token(params[:token])
+
+    render json: user, status: 200 # ok
+  end
+
   private
 
   def user_params

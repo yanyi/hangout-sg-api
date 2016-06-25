@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       # Users
       resources :users, only: [:show, :create, :update]
+      post 'users/get_id', to: 'users#get_id'
 
       # Events
       resources :events
