@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_filter :authenticate_user_from_token!, only: [ :show, :update ]
+  # before_filter :authenticate_user_from_token!, only: [ :show, :update ]
   before_action :set_user, only: [ :show, :update ]
 
   # GET /api/v1/users/1

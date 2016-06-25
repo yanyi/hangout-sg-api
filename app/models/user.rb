@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  validates :token, uniqueness: true
+
   belongs_to :area
 
   has_many :event_users
