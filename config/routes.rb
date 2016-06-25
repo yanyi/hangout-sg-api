@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       # Events
       resources :events
+      get 'events/area/:id', to: 'events#area'
       post 'events/:id/join', to: 'events#join'
       post 'events/:id/leave', to: 'events#leave'
 

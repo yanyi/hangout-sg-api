@@ -15,6 +15,13 @@ class Api::V1::EventsController < ApplicationController
     render json: @event, status: 200 # ok
   end
 
+  # GET /api/v1/events/area/:id
+  def area
+    events = Event.find_by_area_id(params[:area_id])
+
+    render json: events, status: 200 # ok
+  end
+
   # POST /api/v1/events
   def create
     @event = Event.new(event_params)
@@ -61,7 +68,7 @@ class Api::V1::EventsController < ApplicationController
   private
 
   def event_params
-    params.permit(:title, :description, :date_time, :location_id, :activity_id, :user_id)
+    params.permit(:title, :description, :date_time, :location_id, :activity_id, :user_id, :area_id)
   end
 
   def set_event
