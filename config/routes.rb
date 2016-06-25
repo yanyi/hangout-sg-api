@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
       # Events
       resources :events
+      post 'events/:id/join', to: 'events#join'
+      post 'events/:id/leave', to: 'events#leave'
 
       # Locations
       resources :locations, only: [:index, :show]

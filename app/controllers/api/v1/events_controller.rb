@@ -1,6 +1,6 @@
 class Api::V1::EventsController < ApplicationController
-  before_filter :authenticate_user_from_token!, only: [:create, :update, :destroy]
-  before_action :set_event, only: [:show, :update, :destroy]
+  before_filter :authenticate_user_from_token!, only: [:create, :update, :destroy, :join, :leave]
+  before_action :set_event, only: [:show, :update, :join, :leave, :destroy]
   before_action :require_same_user, only: [:update, :destroy]
 
   # GET /api/v1/events
@@ -19,6 +19,7 @@ class Api::V1::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = @user
+    @event.users << @user
 
     if @event.save
       render json: @event, status: :created
@@ -34,6 +35,27 @@ class Api::V1::EventsController < ApplicationController
     else
       render json: @event.errors, status: 422 # unprocessable_entity
     end
+  end
+
+  # POST /api/v1/events/1/join
+  def join
+    @event.users << @user
+
+    render json: @event.users, status: 200 # ok
+  end
+
+  # POST /api/v1/events/1/leave
+  def leave
+    @event.users.delete(@user)
+
+    render json: { message: "User has left event" }, status: 200 # ok
+  end
+
+  # DELETE /api/v1/events/1
+  def destroy
+    @event.destroy
+
+    render json: { message: "Event deleted" }, status: 200 # ok
   end
 
   private
