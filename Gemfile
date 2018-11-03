@@ -4,6 +4,7 @@ gem 'rails', '4.2.8'
 gem 'rails-api'
 gem 'spring', :group => :development
 gem 'active_model_serializers', '~> 0.10.1'
+gem "loofah", ">= 2.2.3"
 
 group :development, :test do
 	gem 'sqlite3'
