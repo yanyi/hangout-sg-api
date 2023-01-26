@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2.7.1'
+gem 'rails', '~> 6.1.7.1'
 gem 'rails-api'
 gem 'spring', :group => :development
 gem 'active_model_serializers', '~> 0.10.1'
