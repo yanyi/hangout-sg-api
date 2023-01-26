@@ -10,7 +10,16 @@ These instructions will get you a copy of the repository up and running on your 
 
 ### Prerequisites
 
-Make sure that you have minimum `Ruby 2.3.0` installed in your local machine. The project currently uses `Rails 4.2.6` and also the `rails-api` gem. Development and testing is done on `sqlite3` whereas production database runs on `pg` (PostgreSQL).
+Make sure that you have minimum `Ruby 2.7.0` installed in your local machine. The project currently uses `Rails 5.2.7.1` and also the `rails-api` gem. Development and testing is done on `sqlite3` whereas production database runs on `pg` (PostgreSQL).
+
+#### `pg`
+
+The `pg` gem requires either `libpq` or `postgresql` client package installed locally beforehand. For macOS users:
+
+```sh
+$ brew install libpq # or `brew install postgresql`
+```
+
 
 ### Installing
 
